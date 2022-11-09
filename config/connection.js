@@ -1,5 +1,6 @@
 //import the sequlize constructor from the library
 const Sequelize = require("sequelize");
+
 require("dotenv").config();
 
 //create connection to our database, pass in your mysql infromation for username and password
@@ -9,7 +10,9 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
 
   {
-    socketPath: "/tmp/mysql.sock",
+    dialectOptions: {
+      socketPath: "/tmp/mysql.sock",
+    },
     host: "localhost",
     dialect: "mysql",
     port: 3306,
